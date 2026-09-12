@@ -1,6 +1,6 @@
 import { IconWhatsapp, IconShield, IconTruck, IconStar, IconBolt } from "./Icons";
 
-const WHATSAPP = "966500000000";
+const WHATSAPP = "966590316881";
 
 const benefits = [
   { icon: <IconStar className="w-5 h-5" />,   title: "أولوية الحجز",      desc: "كن من أوائل من يحصلون على الجهاز عند بدء التوفر." },

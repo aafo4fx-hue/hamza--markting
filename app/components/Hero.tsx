@@ -3,7 +3,7 @@ import Image from "next/image";
 import { NormalizedProduct } from "../data/product";
 import { IconCheck, IconWhatsapp } from "./Icons";
 
-const WHATSAPP = "966500000000";
+const WHATSAPP = "966590316881";
 
 export default function Hero({ product }: { product: NormalizedProduct }) {
   const basePrice = product.storage[0].price.toLocaleString("ar-SA");

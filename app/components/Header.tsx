@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { IconMenu, IconX, IconWhatsapp } from "./Icons";
 
-const WHATSAPP = "966500000000";
+const WHATSAPP = "966590316881";
 
 export default function Header({ onPreorder }: { onPreorder: () => void }) {
   const [open, setOpen] = useState(false);

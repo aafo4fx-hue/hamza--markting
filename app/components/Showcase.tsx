@@ -4,7 +4,7 @@ import Image from "next/image";
 import { NormalizedProduct } from "../data/product";
 import { IconWhatsapp, IconCheck, IconShield, IconTruck } from "./Icons";
 
-const WHATSAPP = "966500000000";
+const WHATSAPP = "966590316881";
 
 export default function Showcase({ product }: { product: NormalizedProduct }) {
   const [colorIdx, setColorIdx] = useState(0);
