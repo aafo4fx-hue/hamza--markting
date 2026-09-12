@@ -48,7 +48,7 @@ export default function Hero({ product }: { product: NormalizedProduct }) {
             <span className="text-white/50 text-xs">🏆 كن من أوائل الحاصلين على iPhone 18 Pro Max</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mt-10 mb-6 max-w-[220px]">
+          <div className="flex flex-col sm:flex-row gap-3 mt-10 mb-6">
             <button onClick={() => setShowPopup(true)}
               className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-6 py-3 rounded-2xl transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-400/30">
               <IconWhatsapp className="w-4 h-4" />
