@@ -25,7 +25,7 @@ export default function Showcase({ product }: { product: NormalizedProduct }) {
   };
 
   return (
-    <section id="showcase" className="bg-white py-20 md:py-28">
+    <section id="showcase" className="bg-white pt-10 pb-20 md:pt-14 md:pb-28">
       <div className="max-w-6xl mx-auto px-5">
         <p className="text-[10px] font-bold tracking-widest uppercase text-amber-500 mb-1.5">اختر جهازك</p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-1.5">iPhone 18 Pro Max</h2>
