@@ -18,8 +18,7 @@ const CITIES = ["الرياض", "جدة", "مكة المكرمة", "المدين
 
 export default function PreorderModal({ product, onClose }: { product: NormalizedProduct; onClose: () => void }) {
   const [step, setStep]       = useState<Step>("form");
-  const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState("");
+  const [error, setError] = useState("");
   const [form, setForm]       = useState<FormData>({
     fullName: "", phone: "", city: "", color: product.colors[0].name,
     storage: product.storage[0].label, paymentMethod: "", installmentMonths: "12",
@@ -35,26 +34,20 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
     return "";
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch("/api/preorder", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          installmentMonths: form.paymentMethod === "installment" ? form.installmentMonths : undefined,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "حدث خطأ");
-      setStep("success");
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : "حدث خطأ، يرجى المحاولة مجددًا");
-    } finally {
-      setLoading(false);
-    }
+  const handleSubmit = () => {
+    const paymentLabel = form.paymentMethod === "cash" ? "كاش" : `تقسيط ${form.installmentMonths} شهرًا`;
+    const msg = [
+      `📱 طلب حجز مسبق - iPhone 18 Pro Max`,
+      `👤 الاسم: ${form.fullName}`,
+      `📞 الجوال: ${form.phone}`,
+      `🏙️ المدينة: ${form.city}`,
+      `🎨 اللون: ${form.color}`,
+      `💾 السعة: ${form.storage}`,
+      `💰 السعر: ${price} ريال`,
+      `💳 الدفع: ${paymentLabel}`,
+    ].join("\n");
+    window.open(`https://wa.me/201012486445?text=${encodeURIComponent(msg)}`, "_blank");
+    setStep("success");
   };
 
   const selectedStorage = product.storage.find((s) => s.label === form.storage);
@@ -164,8 +157,8 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
             {error && <p className="lp-form-error">{error}</p>}
             <div className="lp-summary-actions">
               <button className="lp-btn-outline lp-btn-lg" onClick={() => setStep("form")}>تعديل</button>
-              <button className="lp-btn-gold lp-btn-lg" onClick={handleSubmit} disabled={loading}>
-                {loading ? "جارٍ الإرسال..." : "تأكيد الحجز"}
+              <button className="lp-btn-gold lp-btn-lg" onClick={handleSubmit}>
+                تأكيد الحجز
               </button>
             </div>
           </>
