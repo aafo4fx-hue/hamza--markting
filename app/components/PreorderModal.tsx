@@ -7,6 +7,7 @@ type Step = "form" | "summary" | "success";
 type FormData = {
   fullName: string;
   phone: string;
+  country: string;
   city: string;
   color: string;
   storage: string;
@@ -20,7 +21,7 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
   const [step, setStep]       = useState<Step>("form");
   const [error, setError] = useState("");
   const [form, setForm]       = useState<FormData>({
-    fullName: "", phone: "", city: "", color: product.colors[0].name,
+    fullName: "", phone: "", country: "SA", city: "", color: product.colors[0].name,
     storage: product.storage[0].label, paymentMethod: "", installmentMonths: "12",
   });
 
@@ -28,7 +29,8 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
 
   const validate = () => {
     if (!form.fullName.trim()) return "يرجى إدخال الاسم الكامل";
-    if (!/^05\d{8}$/.test(form.phone)) return "يرجى إدخال رقم جوال سعودي صحيح";
+    if (!form.phone.trim()) return "يرجى إدخال رقم الجوال";
+    if (form.country === "SA" && !/^05\d{8}$/.test(form.phone)) return "يرجى إدخال رقم جوال سعودي صحيح";
     if (!form.city) return "يرجى اختيار المدينة";
     if (!form.paymentMethod) return "يرجى اختيار طريقة الدفع";
     return "";
@@ -36,17 +38,19 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
 
   const handleSubmit = () => {
     const paymentLabel = form.paymentMethod === "cash" ? "كاش" : `تقسيط ${form.installmentMonths} شهرًا`;
+    const waNumber = form.country === "SA" ? "966590316881" : "699590316881";
     const msg = [
       `📱 طلب حجز مسبق - iPhone 18 Pro Max`,
       `👤 الاسم: ${form.fullName}`,
       `📞 الجوال: ${form.phone}`,
+      `🌍 الدولة: ${form.country === "SA" ? "السعودية" : "خارج السعودية"}`,
       `🏙️ المدينة: ${form.city}`,
       `🎨 اللون: ${form.color}`,
       `💾 السعة: ${form.storage}`,
       `💰 السعر: ${price} ريال`,
       `💳 الدفع: ${paymentLabel}`,
     ].join("\n");
-    window.open(`https://wa.me/201552456445?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, "_blank");
     setStep("success");
   };
 
@@ -69,8 +73,20 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
                 <input value={form.fullName} onChange={(e) => set("fullName", e.target.value)} placeholder="محمد عبدالله" />
               </div>
               <div className="lp-field">
+                <label>الدولة</label>
+                <select value={form.country} onChange={(e) => set("country", e.target.value)}>
+                  <option value="SA">🇸🇦 السعودية</option>
+                  <option value="OTHER">🌍 خارج السعودية</option>
+                </select>
+              </div>
+              <div className="lp-field">
                 <label>رقم الجوال</label>
-                <input value={form.phone} onChange={(e) => set("phone", e.target.value)} placeholder="05XXXXXXXX" dir="ltr" />
+                <input
+                  value={form.phone}
+                  onChange={(e) => set("phone", e.target.value)}
+                  placeholder={form.country === "SA" ? "05XXXXXXXX" : "+XXXXXXXXXXX"}
+                  dir="ltr"
+                />
               </div>
               <div className="lp-field">
                 <label>المدينة</label>
