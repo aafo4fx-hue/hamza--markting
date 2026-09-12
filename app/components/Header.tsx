@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { IconMenu, IconX, IconWhatsapp } from "./Icons";
+import InstallmentPopup from "./InstallmentPopup";
 
 const WHATSAPP = "966590316881";
 
@@ -14,17 +16,21 @@ export default function Header({ onPreorder }: { onPreorder: () => void }) {
     { href: "#battery", label: "البطارية" },
   ];
 
+  const [showPopup, setShowPopup] = useState(false);
+
   const goWhatsapp = () => {
     const msg = encodeURIComponent("مرحباً، أريد الحجز المسبق لـ iPhone 18 Pro Max");
     window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank");
+    setShowPopup(false);
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/80 shadow-sm">
+    <>
+    {showPopup && <InstallmentPopup onConfirm={goWhatsapp} onClose={() => setShowPopup(false)} />}
+    <header className="fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-200/80 shadow-sm">
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center gap-6">
-        <a href="#" className="flex items-center gap-2 font-black text-lg text-gray-900 shrink-0">
-          <span className="text-amber-500">◆</span>
-          <span>تك ستور</span>
+        <a href="#" className="shrink-0">
+          <Image src="/og-image.png" alt="logo" width={160} height={56} className="h-14 w-auto object-contain" />
         </a>
 
         <nav className="hidden md:flex gap-7 mr-auto">
@@ -36,7 +42,7 @@ export default function Header({ onPreorder }: { onPreorder: () => void }) {
         </nav>
 
         <button
-          onClick={goWhatsapp}
+          onClick={() => setShowPopup(true)}
           className="hidden md:flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-5 py-2.5 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-400/30"
         >
           <IconWhatsapp className="w-4 h-4" />
@@ -56,7 +62,7 @@ export default function Header({ onPreorder }: { onPreorder: () => void }) {
               {l.label}
             </a>
           ))}
-          <button onClick={() => { setOpen(false); goWhatsapp(); }}
+          <button onClick={() => { setOpen(false); setShowPopup(true); }}
             className="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 rounded-2xl text-base">
             <IconWhatsapp className="w-5 h-5" />
             احجز عبر واتساب
@@ -64,5 +70,6 @@ export default function Header({ onPreorder }: { onPreorder: () => void }) {
         </div>
       )}
     </header>
+    </>  
   );
 }

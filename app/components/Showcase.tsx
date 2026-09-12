@@ -100,11 +100,7 @@ export default function Showcase({ product }: { product: NormalizedProduct }) {
               ))}
             </div>
 
-            <button onClick={goWhatsapp}
-              className="flex items-center justify-center gap-2.5 w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-base py-4 rounded-2xl transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-400/30">
-              <IconWhatsapp className="w-5 h-5" />
-              احجز عبر واتساب
-            </button>
+
           </div>
         </div>
       </div>

@@ -9,18 +9,27 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "iPhone 18 Pro Max | الحجز المسبق",
-  description: "احجز iPhone 18 Pro Max مسبقًا واستفد من عرض التقسيط بسعر الكاش.",
+  title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
+  description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
   openGraph: {
-    title: "iPhone 18 Pro Max | الحجز المسبق",
-    description: "احجز iPhone 18 Pro Max مسبقًا واستفد من عرض التقسيط بسعر الكاش.",
+    title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
+    description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
     type: "website",
     locale: "ar_SA",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "لمسة - iPhone 18 Pro Max",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "iPhone 18 Pro Max | الحجز المسبق",
-    description: "احجز iPhone 18 Pro Max مسبقًا واستفد من عرض التقسيط بسعر الكاش.",
+    title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
+    description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
+    images: ["/og-image.png"],
   },
 };
 
