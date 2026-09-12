@@ -38,7 +38,7 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
 
   const handleSubmit = () => {
     const paymentLabel = form.paymentMethod === "cash" ? "كاش" : `تقسيط ${form.installmentMonths} شهرًا`;
-    const waNumber = form.country === "SA" ? "966590316881" : "699590316881";
+    const waNumber = form.country === "SA" ? "966590316881" : "966590316881";
     const msg = [
       `📱 طلب حجز مسبق - iPhone 18 Pro Max`,
       `👤 الاسم: ${form.fullName}`,
