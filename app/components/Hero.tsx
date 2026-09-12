@@ -37,12 +37,13 @@ export default function Hero({ product }: { product: NormalizedProduct }) {
           </span>
 
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-3">
-            احجز جهازك قبل الإطلاق<br />
-            <span className="text-amber-300">قسّط بسعر الكاش</span>
+            <span className="text-amber-300">قسّط بسعر الكاش</span><br />
+            <span className="text-white">مع لمسة</span>
           </h1>
 
           <p className="text-white/70 text-sm leading-relaxed mb-5">
-            بدون فوائد مخفية · نفس السعر تماماً · تقسيط حتى 24 شهر · دفعة أولى من 1,000 ريال
+            قسّط جهازك حتى 24 شهر بنفس سعر الكاش — بدون فوائد، بدون رسوم مخفية.<br />
+            دفعة أولى تبدأ من 1,000 ريال فقط، والباقي على راحتك.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-2.5 mb-5">

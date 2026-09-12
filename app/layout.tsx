@@ -8,28 +8,34 @@ const cairo = Cairo({
   display: "swap",
 });
 
+const BASE_URL = "https://www.madarstorre.com";
+const OG_IMAGE = `${BASE_URL}/og-image.png`;
+
 export const metadata: Metadata = {
-  title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
-  description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
+  metadataBase: new URL(BASE_URL),
+  title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
+  description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
   openGraph: {
-    title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
-    description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
+    title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
+    description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
+    url: BASE_URL,
+    siteName: "لمسة",
     type: "website",
     locale: "ar_SA",
     images: [
       {
-        url: "/og-image.png",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "لمسة - iPhone 18 Pro Max",
+        alt: "لمسة - iPhone 18 Pro Max · قسّط بسعر الكاش",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "لمسة | iPhone 18 Pro Max بالتقسيط بسعر الكاش",
-    description: "احجز iPhone 18 Pro Max من لمسة واستفد من عرض التقسيط بسعر الكاش.",
-    images: ["/og-image.png"],
+    title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
+    description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية.",
+    images: [OG_IMAGE],
   },
 };
 
