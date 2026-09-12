@@ -46,7 +46,7 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
       `💰 السعر: ${price} ريال`,
       `💳 الدفع: ${paymentLabel}`,
     ].join("\n");
-    window.open(`https://wa.me/201012486445?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/201552456445?text=${encodeURIComponent(msg)}`, "_blank");
     setStep("success");
   };
 
