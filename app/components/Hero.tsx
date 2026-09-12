@@ -43,8 +43,9 @@ export default function Hero({ product }: { product: NormalizedProduct }) {
           </h1>
 
           <p className="text-white/65 text-sm leading-loose mb-6">
-            قسّط جهازك حتى 24 شهر بنفس سعر الكاش<br />
-            بدون فوائد، بدون رسوم مخفية.
+            قسّط جهازك حتى 24 شهر <span className="text-amber-300 font-bold">بسعر الكاش</span> — بدون فوائد، بدون رسوم مخفية.<br />
+            دفعة أولى <span className="text-white font-semibold">1,000 ريال فقط</span> والباقي على راحتك.<br />
+            <span className="text-white/50 text-xs">🏆 كن من أوائل الحاصلين على iPhone 18 Pro Max</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
