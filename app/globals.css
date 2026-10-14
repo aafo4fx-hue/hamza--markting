@@ -207,3 +207,5 @@
  .hero-promo-inner { height: auto; min-height: 0; max-height: none; }
  .hero-promo-device { flex: none; height: 180px; }
 }
+/* Use the image's transparent side margins without shrinking the phone itself. */
+.hero-promo-image { width: 160% !important; max-width: none; left: -30% !important; right: auto !important; }
