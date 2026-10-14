@@ -42,7 +42,7 @@ export const PRODUCT: NormalizedProduct = {
       code: "#800020",
       images: [
         "/iphone-burgundy.webp",
-        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789144351/795ee711-d215-49ac-af72-1d2bb78b4507_1_iyr3w2.webp",
+        "/iphone-burgundy-front.webp",
       ],
     },
     {

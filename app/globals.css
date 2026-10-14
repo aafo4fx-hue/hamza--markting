@@ -90,3 +90,65 @@
  .hero-assurance { gap: 8px; }
  .trust-item { gap: 6px; padding-right: 0; }
 }
+
+/* Campaign hero inspired by the reference: headline, benefits, device, offer. */
+.hero-promo { background: #fdfcfb; overflow: hidden; border-bottom: 1px solid #eeebe5; }
+.hero-promo-inner { padding-top: 43px; padding-bottom: 28px; text-align: center; }
+.hero-promo-model { display: inline-block; font-family: Arial, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; color: #8b7764; margin-bottom: 14px; }
+.hero-promo h1 { font-size: clamp(30px, 3.5vw, 49px); line-height: 1.5; font-weight: 600; letter-spacing: -1.3px; }
+.hero-promo h1 > span { display: block; font-size: 1.18em; color: #7f3046; font-weight: 850; margin-top: 2px; }
+.hero-promo-intro { font-size: 13px; color: #777b7d; line-height: 1.9; margin-top: 10px; }
+.hero-promo-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width: min(620px,100%); margin: 28px auto 0; }
+.hero-promo-benefits > div { display: flex; flex-direction: column; align-items: center; position: relative; padding: 0 16px; }
+.hero-promo-benefits > div + div::before { content: ""; position: absolute; right: 0; top: 21px; bottom: 9px; width: 1px; background: #e6e0d7; }
+.hero-promo-icon { width: 49px; height: 49px; display: grid; place-items: center; background: #f2ece2; border-radius: 50%; color: #a78049; margin-bottom: 9px; }
+.hero-promo-icon svg { stroke-width: 1.7; }
+.hero-promo-benefits strong { font-size: 12px; font-weight: 750; line-height: 1.8; }
+.hero-promo-benefits small { font-size: 10px; color: #858181; margin-top: 3px; line-height: 1.8; }
+.hero-promo-device { position: relative; width: min(600px,100%); height: 370px; margin: 22px auto 0; overflow: hidden; }
+.hero-promo-device::after { content: ""; position: absolute; height: 16px; bottom: 9px; left: 21%; right: 21%; border-radius: 50%; background: #582b4120; filter: blur(12px); z-index: 0; }
+.hero-promo-image { object-fit: cover; object-position: center; transform: scale(1.45); z-index: 1; }
+.hero-promo-offer { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 24px; text-align: right; width: min(770px,100%); margin: 5px auto 0; padding: 20px 28px; background: #f4f0e9; border: 1px solid #e8dfd0; border-radius: 14px; }
+.hero-promo-payment > span { display: block; font-size: 11px; color: #696b69; }
+.hero-promo-payment > strong { display: block; color: #7f3046; font-size: 32px; line-height: 1.6; }
+.hero-promo-payment b { font-family: Arial,sans-serif; font-weight: 750; }
+.hero-promo-payment small { font-size: 13px; color: var(--navy); font-weight: 500; }
+.hero-promo-delivery { display: flex; align-items: center; gap: 12px; padding-right: 24px; border-right: 1px solid #ddd4c6; }
+.hero-promo-delivery > svg { color: #a78049; stroke-width: 1.5; flex-shrink: 0; }
+.hero-promo-delivery strong { display: block; font-size: 11px; font-weight: 700; }
+.hero-promo-delivery small { display: block; margin-top: 4px; font-size: 9px; color: #7e807a; }
+.hero-promo-order { min-width: 135px; min-height: 48px; font-size: 12px; flex-shrink: 0; }
+.hero-promo-note { font-size: 9px; color: #858580; line-height: 1.9; margin-top: 13px; }
+@media (max-width: 760px) {
+ .hero-promo-inner { padding-top: 29px; padding-bottom: 25px; }
+ .hero-promo-model { font-size: 10px; letter-spacing: 1.5px; margin-bottom: 13px; }
+ .hero-promo h1 { font-size: clamp(25px,6.6vw,38px); line-height: 1.6; letter-spacing: -.7px; }
+ .hero-promo h1 > span { font-size: 1.2em; }
+ .hero-promo-intro { font-size: 11px; margin-top: 9px; }
+ .hero-promo-benefits { margin-top: 24px; }
+ .hero-promo-benefits > div { padding-inline: 7px; }
+ .hero-promo-icon { width: 42px; height: 42px; margin-bottom: 8px; }
+ .hero-promo-icon svg { width: 21px; height: 21px; }
+ .hero-promo-benefits strong { font-size: 10px; }
+ .hero-promo-benefits small { font-size: 8px; }
+ .hero-promo-benefits > div + div::before { top: 17px; bottom: 6px; }
+ .hero-promo-device { height: 310px; width: 100%; margin-top: 18px; }
+ .hero-promo-image { transform: scale(1.45); }
+ .hero-promo-offer { display: grid; grid-template-columns: 1fr 1.2fr; gap: 17px 12px; margin-top: 0; padding: 17px 16px; border-radius: 12px; }
+ .hero-promo-payment > span { font-size: 10px; }
+ .hero-promo-payment > strong { font-size: 29px; }
+ .hero-promo-payment small { font-size: 11px; }
+ .hero-promo-delivery { padding-right: 13px; gap: 8px; }
+ .hero-promo-delivery > svg { width: 21px; }
+ .hero-promo-delivery strong { font-size: 9px; line-height: 1.8; }
+ .hero-promo-delivery small { font-size: 8px; line-height: 1.7; }
+ .hero-promo-order { grid-column: 1 / -1; width: 100%; min-height: 47px; font-size: 12px; }
+ .hero-promo-note { margin-top: 12px; font-size: 8px; padding-inline: 4px; }
+}
+@media (max-width: 359px) {
+ .hero-promo-device { height: 275px; }
+ .hero-promo-benefits > div { padding-inline: 3px; }
+ .hero-promo-benefits strong { font-size: 9px; }
+ .hero-promo-benefits small { font-size: 7px; }
+ .hero-promo-offer { padding-inline: 13px; }
+}
