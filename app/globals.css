@@ -143,7 +143,7 @@
  .hero-promo-delivery > svg { width: 21px; }
  .hero-promo-delivery strong { font-size: 9px; line-height: 1.8; }
  .hero-promo-delivery small { font-size: 8px; line-height: 1.7; }
- .hero-promo-order { grid-column: 1 / -1; width: 100%; min-height: 47px; font-size: 12px; }
+ .hero-promo-order { grid-column: 1 / -1; width: 100%; min-height: 47px; font-size: 10px; }
  .hero-promo-note { margin-top: 12px; font-size: 8px; padding-inline: 4px; }
 }
 @media (max-width: 359px) {
