@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FloatingWhatsapp from "./components/FloatingWhatsapp";
+
 import { Cairo } from "next/font/google";
 import "./globals.css";
 
@@ -15,10 +15,10 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
-  description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
+  description: "اطلب iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
   openGraph: {
     title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
-    description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
+    description: "اطلب iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية. دفعة أولى من 1,000 ريال.",
     url: BASE_URL,
     siteName: "لمسة",
     type: "website",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "لمسة | قسّط بسعر الكاش · iPhone 18 Pro Max",
-    description: "احجز iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية.",
+    description: "اطلب iPhone 18 Pro Max من لمسة — قسّط حتى 24 شهر بنفس سعر الكاش، بدون فوائد مخفية.",
     images: [OG_IMAGE],
   },
 };
@@ -45,8 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ar" dir="rtl" className={cairo.variable}>
       <body>
         {children}
-        <FloatingWhatsapp />
+
       </body>
     </html>
   );
 }
+
