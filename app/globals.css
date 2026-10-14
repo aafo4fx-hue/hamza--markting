@@ -45,7 +45,7 @@
 .footer-simple-bottom > a[dir="ltr"] { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: .6px; }
 
 /* WhatsApp action, bottom right. */
-.whatsapp-float { right: 24px; left: auto; bottom: 24px; width: 56px; height: 56px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 0; background: #25d366; color: #fff; box-shadow: 0 5px 20px #128c7e35; }
+.whatsapp-float { right: 24px; left: auto; bottom: 24px; width: auto; height: 52px; padding: 0 19px; display: flex; align-items: center; gap: 9px; border-radius: 30px; border: 0; background: #25d366; color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap; box-shadow: 0 5px 20px #128c7e35; }
 .whatsapp-float .whatsapp-float-icon { width: 29px; height: 29px; color: #fff; }
 .whatsapp-float:hover { background: #1ebc59; }
 
@@ -55,7 +55,9 @@
  .brand-original .brand-image { width: 66px; height: 66px; }
  .header-actions { gap: 8px; }
  .menu-toggle { min-width: 44px; min-height: 44px; }
- .header-actions .button { min-height: 44px; }
+ .header-actions .button { min-height: 34px; padding: 6px 10px; gap: 6px; font-size: 9px; border-radius: 6px; position: relative; }
+ .header-actions .button::before { content: ""; position: absolute; inset: -5px 0; }
+ .header-actions .button svg { width: 14px; height: 14px; }
  .financing-simple { padding-block: 44px; }
  .financing-simple-inner { padding: 26px 22px; border-radius: 12px; }
  .financing-simple .eyebrow { font-size: 11px; }
@@ -77,8 +79,8 @@
  .footer-simple-bottom { font-size: 9px; padding-top: 15px; padding-bottom: 88px; gap: 7px 18px; }
  .footer-simple-bottom > p { flex-basis: 100%; }
  .footer-simple-bottom > a[dir="ltr"] { font-size: 12px; }
- .whatsapp-float { right: 18px; left: auto; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); width: 54px; height: 54px; padding: 0; }
- .whatsapp-float .whatsapp-float-icon { width: 28px; height: 28px; }
+ .whatsapp-float { right: 18px; left: auto; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); width: auto; height: 48px; padding: 0 15px; font-size: 11px; }
+ .whatsapp-float .whatsapp-float-icon { width: 24px; height: 24px; }
 }
 @media (max-width: 359px) {
  .financing-simple-inner { padding-inline: 18px; }

@@ -54,6 +54,6 @@ export default function LandingPage(){
    <div className="footer-simple-bottom"><p>© {new Date().getFullYear()} لمسة. جميع الحقوق محفوظة.</p><a href="tel:+966590316881" dir="ltr">+966 59 031 6881</a><a href="#">العودة للأعلى ↑</a></div>
   </div>
  </footer>
- <a className="whatsapp-float" href={orderUrl} target="_blank" rel="noopener noreferrer" aria-label="اطلب الآن عبر واتساب"><IconWhatsapp className="whatsapp-float-icon"/></a>
+ <a className="whatsapp-float" href={orderUrl} target="_blank" rel="noopener noreferrer" aria-label="اطلب الآن عبر واتساب"><IconWhatsapp className="whatsapp-float-icon"/><span>اطلب الآن</span></a>
  </>;
 }
