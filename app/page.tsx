@@ -18,11 +18,10 @@ export default function LandingPage(){
  const [imageIndex,setImageIndex]=useState(0);
  const color=PRODUCT.colors[colorIndex], storage=PRODUCT.storage[storageIndex], price=storage.salePrice??storage.price;
  const orderUrl=`https://wa.me/966596010750?text=${encodeURIComponent(`هلا مدار، ودي أطلب iPhone 18 Pro Max\nاللون: ${color.nameAr}\nالسعة: ${storage.label}\nالسعر: ${price.toLocaleString("en-US")} ريال\nياليت توضحون لي التوفر وخيارات الدفع والتوصيل.`)}`;
- const order=(className="button button-gold")=><a className={className} href={orderUrl} target="_blank" rel="noopener noreferrer">اطلب الآن<ArrowUpLeft size={18}/></a>;
- const heroOrder=(className="button button-gold")=><a className={className} href={orderUrl} target="_blank" rel="noopener noreferrer">للطلب والاستفسار، تواصل معنا عبر الواتساب<ArrowUpLeft size={18}/></a>;
+ const order=(className="button button-gold")=><a className={className} href={orderUrl} target="_blank" rel="noopener noreferrer"> للطلب والاستفسار، يُرجى التواصل معنا عبر الواتساب.<ArrowUpLeft size={18}/></a>;
  return <>
  <div className="announcement"><Sparkles size={14}/><span>الآيفون اللي بخاطرك، بقسط على راحتك.</span><span className="announcement-divider">|</span><strong>نفس سعر الكاش</strong><ArrowLeft size={14}/></div>
- <header className="site-header"><div className="container header-inner"><Logo/><nav className="desktop-nav" aria-label="القائمة الرئيسية">{links.map(l=><a key={l.href} href={l.href}>{l.label}</a>)}</nav><div className="header-actions">{order()}<button className="menu-toggle" aria-label={menuOpen?"إغلاق القائمة":"فتح القائمة"} aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X/>:<Menu/>}</button></div></div>{menuOpen&&<nav id="mobile-nav" className="mobile-nav" aria-label="قائمة الجوال">{links.map(l=><a key={l.href} href={l.href} onClick={()=>setMenuOpen(false)}>{l.label}<ArrowUpLeft size={16}/></a>)}</nav>}</header>
+ <header className="site-header"><div className="container header-inner"><Logo/><nav className="desktop-nav" aria-label="القائمة الرئيسية">{links.map(l=><a key={l.href} href={l.href}>{l.label}</a>)}</nav><div className="header-actions"><button className="menu-toggle" aria-label={menuOpen?"إغلاق القائمة":"فتح القائمة"} aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X/>:<Menu/>}</button></div></div>{menuOpen&&<nav id="mobile-nav" className="mobile-nav" aria-label="قائمة الجوال">{links.map(l=><a key={l.href} href={l.href} onClick={()=>setMenuOpen(false)}>{l.label}<ArrowUpLeft size={16}/></a>)}</nav>}</header>
  <main id="main-content">
  <section className="hero-promo" id="device" aria-labelledby="hero-title">
   <div className="container hero-promo-inner">
