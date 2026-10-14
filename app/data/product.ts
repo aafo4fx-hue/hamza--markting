@@ -41,7 +41,7 @@ export const PRODUCT: NormalizedProduct = {
       nameAr: "برجاندي",
       code: "#800020",
       images: [
-        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789144346/68a6112d-56da-4755-9a83-006a073eed2d_1_rnhta5.webp",
+        "/iphone-burgundy.webp",
         "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789144351/795ee711-d215-49ac-af72-1d2bb78b4507_1_iyr3w2.webp",
       ],
     },
