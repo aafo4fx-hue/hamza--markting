@@ -58,6 +58,7 @@
  .header-actions .button { min-height: 34px; padding: 6px 10px; gap: 6px; font-size: 9px; border-radius: 6px; position: relative; }
  .header-actions .button::before { content: ""; position: absolute; inset: -5px 0; }
  .header-actions .button svg { width: 14px; height: 14px; }
+ .button { font-size: 10px; gap: 8px; padding: 10px 16px; }
  .financing-simple { padding-block: 44px; }
  .financing-simple-inner { padding: 26px 22px; border-radius: 12px; }
  .financing-simple .eyebrow { font-size: 11px; }
