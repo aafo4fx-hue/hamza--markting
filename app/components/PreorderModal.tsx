@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NormalizedProduct } from "../data/product";
+import { trackStartCheckout, trackPurchase, trackSignUp } from "../utils/snapchat";
 
 type Step = "form" | "summary" | "success";
 
@@ -24,6 +25,21 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
     fullName: "", phone: "", country: "SA", city: "", color: product.colors[0].name,
     storage: product.storage[0].label, paymentMethod: "", installmentMonths: "12",
   });
+
+  const selectedStorage = product.storage.find((s) => s.label === form.storage);
+  const price = selectedStorage ? (selectedStorage.salePrice ?? selectedStorage.price) : 0;
+
+  // Track when modal opens (checkout started)
+  useEffect(() => {
+    trackStartCheckout({
+      price: price,
+      currency: 'SAR',
+      item_ids: ['iphone-18-pro-max'],
+      item_category: 'smartphones',
+      number_items: 1,
+      payment_info_available: 0,
+    });
+  }, []);
 
   const set = (k: keyof FormData, v: string) => setForm((p) => ({ ...p, [k]: v }));
 
@@ -50,12 +66,30 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
       `💰 السعر: ${price} ريال`,
       `💳 الدفع: ${paymentLabel}`,
     ].join("\n");
+    
+    // Track purchase/pre-order completion
+    const transactionId = `preorder-${Date.now()}-${form.phone.slice(-4)}`;
+    trackPurchase({
+      price: price,
+      currency: 'SAR',
+      transaction_id: transactionId,
+      item_ids: ['iphone-18-pro-max'],
+      item_category: 'smartphones',
+      number_items: 1,
+      user_phone_number: form.phone,
+    });
+
+    // Track sign-up (lead generation)
+    trackSignUp({
+      sign_up_method: 'pre-order-form',
+      user_phone_number: form.phone,
+    });
+
     window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, "_blank");
     setStep("success");
   };
 
-  const selectedStorage = product.storage.find((s) => s.label === form.storage);
-  const price = selectedStorage ? (selectedStorage.salePrice ?? selectedStorage.price).toLocaleString("ar-SA") : "";
+  const priceFormatted = price.toLocaleString("ar-SA");
 
   return (
     <div className="lp-modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -161,7 +195,7 @@ export default function PreorderModal({ product, onClose }: { product: Normalize
               <div className="lp-summary-row"><span>الجهاز</span><strong>iPhone 18 Pro Max</strong></div>
               <div className="lp-summary-row"><span>اللون</span><strong>{form.color}</strong></div>
               <div className="lp-summary-row"><span>السعة</span><strong>{form.storage}</strong></div>
-              <div className="lp-summary-row"><span>السعر</span><strong>{price} ريال</strong></div>
+              <div className="lp-summary-row"><span>السعر</span><strong>{priceFormatted} ريال</strong></div>
               <div className="lp-summary-row"><span>طريقة الدفع</span><strong>{form.paymentMethod === "cash" ? "كاش" : "تقسيط"}</strong></div>
               {form.paymentMethod === "installment" && (
                 <div className="lp-summary-row"><span>مدة التقسيط</span><strong>{form.installmentMonths} شهرًا</strong></div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import Script from "next/script";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 
@@ -43,9 +43,31 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className={cairo.variable}>
+      <head>
+        {/* Snapchat Pixel Code */}
+        <Script
+          id="snapchat-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+              {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+              a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+              r.src=n;var u=t.getElementsByTagName(s)[0];
+              u.parentNode.insertBefore(r,u);})(window,document,
+              'https://sc-static.net/scevent.min.js');
+
+              snaptr('init', '465adee3-d870-4b0a-9681-23c9f5882c0a', {
+                user_email: ''
+              });
+
+              snaptr('track', 'PAGE_VIEW');
+            `,
+          }}
+        />
+      </head>
       <body>
         {children}
-
       </body>
     </html>
   );

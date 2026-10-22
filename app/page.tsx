@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpLeft, ArrowLeft, Check, ShieldCheck, Truck, CreditCard, MessageCircle, Menu, X, ChevronDown, Sparkles, Headphones, CalendarDays } from "lucide-react";
 import { IconWhatsapp } from "./components/Icons";
 import { PRODUCT } from "./data/product";
+import { trackViewContent, trackWhatsAppClick } from "./utils/snapchat";
 const links = [{href:"#device",label:"اكتشف الآيفون"},{href:"#choose",label:"اختر جهازك"},{href:"#installments",label:"التقسيط"},{href:"#faq",label:"الأسئلة الشائعة"}];
 const faqs = [
 ["كيف أطلب جهازي من مدار؟","اختر اللون والسعة اللي تناسبك، واضغط «اطلب الآن». بنفتح لك واتساب بتفاصيل اختيارك، وفريق مدار يكمل معك الطلب ويأكد لك التوفر وموعد التوصيل."],
@@ -17,8 +18,23 @@ export default function LandingPage(){
  const [storageIndex,setStorageIndex]=useState(0);
  const [imageIndex,setImageIndex]=useState(0);
  const color=PRODUCT.colors[colorIndex], storage=PRODUCT.storage[storageIndex], price=storage.salePrice??storage.price;
+ 
+ // Track page view when component mounts
+ useEffect(() => {
+   trackViewContent({
+     price: price,
+     currency: 'SAR',
+     item_ids: ['iphone-18-pro-max'],
+     item_category: 'smartphones',
+   });
+ }, []);
+ 
+ const handleWhatsAppClick = () => {
+   trackWhatsAppClick();
+ };
+ 
  const orderUrl=`https://wa.me/966596010750?text=${encodeURIComponent(`هلا مدار، ودي أطلب iPhone 18 Pro Max\nاللون: ${color.nameAr}\nالسعة: ${storage.label}\nالسعر: ${price.toLocaleString("en-US")} ريال\nياليت توضحون لي التوفر وخيارات الدفع والتوصيل.`)}`;
- const order=(className="button button-gold")=><a className={className} href={orderUrl} target="_blank" rel="noopener noreferrer"> للطلب والاستفسار، تواصل معنا عبر واتساب.<ArrowUpLeft size={18}/></a>;
+ const order=(className="button button-gold")=><a className={className} href={orderUrl} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick}> للطلب والاستفسار، تواصل معنا عبر واتساب.<ArrowUpLeft size={18}/></a>;
  return <>
  <div className="announcement"><Sparkles size={14}/><span>الآيفون اللي بخاطرك، بقسط على راحتك.</span><span className="announcement-divider">|</span><strong>نفس سعر الكاش</strong><ArrowLeft size={14}/></div>
  <header className="site-header"><div className="container header-inner"><Logo/><nav className="desktop-nav" aria-label="القائمة الرئيسية">{links.map(l=><a key={l.href} href={l.href}>{l.label}</a>)}</nav><div className="header-actions"><button className="menu-toggle" aria-label={menuOpen?"إغلاق القائمة":"فتح القائمة"} aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X/>:<Menu/>}</button></div></div>{menuOpen&&<nav id="mobile-nav" className="mobile-nav" aria-label="قائمة الجوال">{links.map(l=><a key={l.href} href={l.href} onClick={()=>setMenuOpen(false)}>{l.label}<ArrowUpLeft size={16}/></a>)}</nav>}</header>
@@ -61,7 +77,7 @@ export default function LandingPage(){
    <p className="financing-simple-note">التقسيط حسب شروط العرض والأهلية. نوضّح لك جميع التفاصيل قبل تأكيد الطلب.</p>
   </div>
  </section>
- <section className="faq-section" id="faq"><div className="container faq-grid"><div><span className="eyebrow">كل شيء واضح</span><h2>بخاطرك سؤال؟<br/><span>جوابه عندنا.</span></h2><p>وإذا عندك أي استفسار ثاني،<br/>فريق مدار حاضر لك.</p><a className="text-link" href={orderUrl} target="_blank" rel="noopener noreferrer">كلّمنا على واتساب<ArrowUpLeft size={17}/></a></div><div className="faq-list">{faqs.map(([q,a])=><details key={q}><summary>{q}<ChevronDown size={18}/></summary><p>{a}</p></details>)}</div></div></section>
+ <section className="faq-section" id="faq"><div className="container faq-grid"><div><span className="eyebrow">كل شيء واضح</span><h2>بخاطرك سؤال؟<br/><span>جوابه عندنا.</span></h2><p>وإذا عندك أي استفسار ثاني،<br/>فريق مدار حاضر لك.</p><a className="text-link" href={orderUrl} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick}>كلّمنا على واتساب<ArrowUpLeft size={17}/></a></div><div className="faq-list">{faqs.map(([q,a])=><details key={q}><summary>{q}<ChevronDown size={18}/></summary><p>{a}</p></details>)}</div></div></section>
  <section className="final-cta container"><span className="eyebrow">اختيارك الحلو يبدأ هنا</span><h2>جاهز للتجربة الجديدة؟</h2><p>آيفونك اللي بخاطرك، صار أقرب لك.</p>{order("button button-gold button-large")}</section>
  </main>
  <footer className="footer-simple">
@@ -69,11 +85,11 @@ export default function LandingPage(){
    <div className="footer-simple-top">
     <p>اختيارات تليق فيك، <span>وخدمة تستاهل ثقتك.</span></p>
     <nav aria-label="روابط الفوتر">{links.map(l=><a href={l.href} key={l.href}>{l.label}</a>)}</nav>
-    <a className="footer-simple-contact" href="https://wa.me/966596010750" target="_blank" rel="noopener noreferrer"><IconWhatsapp className="footer-whatsapp-icon"/><span>حاضرين لك على واتساب</span><ArrowUpLeft size={16}/></a>
+    <a className="footer-simple-contact" href="https://wa.me/966596010750" target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick}><IconWhatsapp className="footer-whatsapp-icon"/><span>حاضرين لك على واتساب</span><ArrowUpLeft size={16}/></a>
    </div>
    <div className="footer-simple-bottom"><p>© {new Date().getFullYear()} مدار. جميع الحقوق محفوظة.</p><a href="tel:+966596010750" dir="ltr">+966596010750</a><a href="#">العودة للأعلى ↑</a></div>
   </div>
  </footer>
- <a className="whatsapp-float" href={orderUrl} target="_blank" rel="noopener noreferrer" aria-label="اطلب الآن عبر واتساب"><IconWhatsapp className="whatsapp-float-icon"/><span>اطلب الآن</span></a>
+ <a className="whatsapp-float" href={orderUrl} target="_blank" rel="noopener noreferrer" aria-label="اطلب الآن عبر واتساب" onClick={handleWhatsAppClick}><IconWhatsapp className="whatsapp-float-icon"/><span>اطلب الآن</span></a>
  </>;
 }

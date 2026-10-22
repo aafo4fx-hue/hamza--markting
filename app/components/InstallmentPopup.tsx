@@ -1,7 +1,13 @@
 "use client";
+import { useEffect } from "react";
 import { X, Banknote, CalendarCheck, BadgeCheck, MessageCircle } from "lucide-react";
+import { trackInstallmentView } from "../utils/snapchat";
 
 export default function InstallmentPopup({ onConfirm, onClose }: { onConfirm: () => void; onClose: () => void }) {
+  // Track installment popup view
+  useEffect(() => {
+    trackInstallmentView();
+  }, []);
   return (
     <div
       className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"

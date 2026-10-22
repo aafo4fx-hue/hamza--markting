@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import InstallmentPopup from "./InstallmentPopup";
+import { trackWhatsAppClick } from "../utils/snapchat";
 
 const WHATSAPP = "966590316881";
 
@@ -8,6 +9,9 @@ export default function FloatingWhatsapp() {
   const [showPopup, setShowPopup] = useState(false);
 
   const goWhatsapp = () => {
+    // Track WhatsApp button click
+    trackWhatsAppClick();
+    
     const msg = encodeURIComponent("مرحباً، أريد الحجز المسبق لـ iPhone 18 Pro Max");
     window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank");
     setShowPopup(false);
